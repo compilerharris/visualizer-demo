@@ -1,114 +1,100 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useRef, useState } from "react";
+import domtoimage from "dom-to-image-more";
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const divRef = useRef<HTMLDivElement>(null);
+  const scaleFactor = 1;
+  const [obj, setObj] = useState({
+    roof: {
+      isSelected: false,
+      color: '#e3e3e3'
+    },
+    wall: {
+      isSelected: false,
+      color: '#e3e3e3'
+    }
+  });
+  const changeColor = (color: string) => {
+    if(obj.roof.isSelected){
+      setObj({...obj,
+        roof: {...obj.roof, color: `#${color}`},
+      })
+    }else{
+      setObj({...obj,
+        wall: {...obj.wall, color: `#${color}`},
+      })
+    }
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const downloadJPEG = async (e: any) => {
+    e.preventDefault();
+    if (!divRef.current) return;
+
+    domtoimage.toJpeg(divRef.current, { quality: 1, width: 335 * scaleFactor, height: 500 * scaleFactor }) // High-quality JPEG
+      .then((imgData: string) => {
+        const link = document.createElement("a");
+        link.href = imgData;
+        link.download = "download.jpg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch((error: any) => {
+        console.error("Error generating JPEG:", error);
+      });
+  };
+  
+  return (
+    <div className="main-wrp">
+        <h1>Home Glazer - Visualiser Demo</h1>
+        <div>
+            <div className="left-wrp" ref={divRef} id="downloadable">
+                <h2>Your Room</h2>
+                <div className="img-wrp">
+                  {/* <canvas id="renderCanvas" width="335" height="500"></canvas> */}
+                    <img className="room" src="/assets/images/main.png" />
+                    <img src="/assets/images/wall.png" style={{backgroundColor: obj.wall.color}} />
+                    <img src="/assets/images/roof.png" style={{backgroundColor: obj.roof.color}} />
+                </div> 
+            </div>
+            <div className="right-wrp">
+                <h2>Change Your Room Color</h2>
+                <div className="wall-wrp">
+                    <div className="roof-wrp" style={{backgroundColor: obj.roof.isSelected?'#1a9bd74d':''}} onClick={()=>{
+                      setObj({...obj,
+                        roof: {...obj.roof, isSelected: true},
+                        wall: {...obj.wall, isSelected: false},
+                      })
+                    }} >
+                        <span style={{backgroundColor: obj.roof.color}}></span>
+                        <p>Roof</p>
+                    </div>
+                    <div className="wall-1-wrp" style={{border: '0',backgroundColor: obj.wall.isSelected?'#1a9bd74d':''}} onClick={()=>{
+                      setObj({...obj,
+                        roof: {...obj.roof, isSelected: false},
+                        wall: {...obj.wall, isSelected: true},
+                      })
+                    }}>
+                        <span style={{backgroundColor: obj.wall.color}}></span>
+                        <p>Wall 1</p>
+                    </div>
+                    {/* <div className="wall-2-wrp" style={{border: '0'}}>
+                        <span></span>
+                        <p>Wall 2</p>
+                    </div> */}
+                </div> 
+                <div className="choose-color-wrp">
+                    <h2>Choose Color</h2>
+                    <div>
+                        <div onClick={()=>{changeColor("a13f3f")}} style={{background: '#a13f3f'}}></div>
+                        <div onClick={()=>{changeColor("4e5e87")}} style={{background: '#4e5e87'}}></div>
+                        <div onClick={()=>{changeColor("45a339")}} style={{background: '#45a339'}}></div>
+                        <div onClick={()=>{changeColor("8d5f1d")}} style={{background: '#8d5f1d'}}></div>
+                    </div>
+                </div>
+                <a href="" className="download-btn" onClick={downloadJPEG}>Download Your Design</a>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

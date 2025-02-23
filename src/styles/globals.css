@@ -1,21 +1,123 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+h1{
+  text-align: center;
+  padding: 15px 0;
+  background: #1A9BD7;
+  color: #fff;
+  font-size: 22px;
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+h2{
+  padding: 10px 0;
+}
+.main-wrp > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-wrp{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+.left-wrp h2{
+  color: #1A9BD7;
+  background: white;
+}
+.img-wrp{
+  position: relative;
+  width: 335px;
+  height: 500px;
+}
+.room{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+.img-wrp img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+.right-wrp{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #000;
+}
+.wall-wrp{
+  position: relative;
+}
+.wall-wrp > div {
+  border-bottom: 1px solid #1a9bd7;
+  width: 230px;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+.wall-wrp > div:hover {
+  background-color: #1a9bd74d;
+}
+.wall-wrp span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: red;
+  border-radius: 8px;
+  margin: 0 14px 0 0;
+  pointer-events: none;
+  border: 2px solid #fff;
+}
+.wall-wrp p {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.choose-color-wrp{
+  text-align: center;
+  border: 1px solid #1a9bd7;
+  padding: 20px 40px 40px;
+}
+.choose-color-wrp > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.choose-color-wrp > div div {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: red;
+  border-radius: 8px;
+  margin: 0 14px 0 0;
+  cursor: pointer;
+}
+.download-btn {
+  background: #1a9bd7;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  margin: 20px 0 0;
+  font-size: 20px;
+  transition: all .5s ease;
+}
+.download-btn:hover {
+  background: #ED316E;
 }
