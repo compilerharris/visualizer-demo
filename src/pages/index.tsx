@@ -3,37 +3,37 @@ import domtoimage from "dom-to-image-more";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
-interface ICard {
-  image:{profileImage:""},
-  basicInfo:{
-    name: "",
-    jobTitle: "",
-    businessName: "",
-    services: "",
-    desc: "",
-    cat: "",
-    type: "",
-  },
-  contactUs:{
-    personalMobile: "",
-    wpNumber: "",
-    websiteUrl: "",
-    email: "",
-  },
-  timing: "",
-  address:"",
-  social:"",
-  tags:"",
-  plan: 'paid',
-  createdBy: "",
-  shareableUrl: "",
-  device: '',
-  requestTime: "",
-  isApproved: false,
-  expiry: ""
-}
+// interface ICard {
+//   image:{profileImage:""},
+//   basicInfo:{
+//     name: "",
+//     jobTitle: "",
+//     businessName: "",
+//     services: "",
+//     desc: "",
+//     cat: "",
+//     type: "",
+//   },
+//   contactUs:{
+//     personalMobile: "",
+//     wpNumber: "",
+//     websiteUrl: "",
+//     email: "",
+//   },
+//   timing: "",
+//   address:"",
+//   social:"",
+//   tags:"",
+//   plan: 'paid',
+//   createdBy: "",
+//   shareableUrl: "",
+//   device: '',
+//   requestTime: "",
+//   isApproved: false,
+//   expiry: ""
+// }
 
-export default function Home(data: ICard) {
+export default function Home() {
   const divRef = useRef<HTMLDivElement>(null);
   const scaleFactor = 1;
   const headerHeight = 50;
@@ -148,12 +148,12 @@ export default function Home(data: ICard) {
 }
 
 
-// Fetch data before rendering (Server-Side Rendering)
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("https://searchmaar.com/api/sharable-sm-card/searchmaar");
-  const data = await res.json();
+// // Fetch data before rendering (Server-Side Rendering)
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const res = await fetch("https://searchmaar.com/api/sharable-sm-card/searchmaar");
+//   const data = await res.json();
 
-  return {
-    props: data
-  };
-};
+//   return {
+//     props: data
+//   };
+// };
