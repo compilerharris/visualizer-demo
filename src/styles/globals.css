@@ -93,6 +93,7 @@ h2{
   text-align: center;
   border: 1px solid #1a9bd7;
   padding: 20px 40px 40px;
+  margin-top: 20px;
 }
 .choose-color-wrp > div{
   display: flex;

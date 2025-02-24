@@ -4,6 +4,7 @@ import domtoimage from "dom-to-image-more";
 export default function Home() {
   const divRef = useRef<HTMLDivElement>(null);
   const scaleFactor = 1;
+  const headerHeight = 50;
   const [obj, setObj] = useState({
     roof: {
       isSelected: false,
@@ -30,7 +31,7 @@ export default function Home() {
     e.preventDefault();
     if (!divRef.current) return;
 
-    domtoimage.toJpeg(divRef.current, { quality: 1, width: 335 * scaleFactor, height: 500 * scaleFactor }) // High-quality JPEG
+    domtoimage.toJpeg(divRef.current, { quality: 1, width: 335 * scaleFactor, height: (500 * scaleFactor) + headerHeight }) // High-quality JPEG
       .then((imgData: string) => {
         const link = document.createElement("a");
         link.href = imgData;
@@ -51,7 +52,6 @@ export default function Home() {
             <div className="left-wrp" ref={divRef} id="downloadable">
                 <h2>Your Room</h2>
                 <div className="img-wrp">
-                  {/* <canvas id="renderCanvas" width="335" height="500"></canvas> */}
                     <img className="room" src="/assets/images/main.png" />
                     <img src="/assets/images/wall.png" style={{backgroundColor: obj.wall.color}} />
                     <img src="/assets/images/roof.png" style={{backgroundColor: obj.roof.color}} />
@@ -92,7 +92,7 @@ export default function Home() {
                         <div onClick={()=>{changeColor("8d5f1d")}} style={{background: '#8d5f1d'}}></div>
                     </div>
                 </div>
-                <a href="" className="download-btn" onClick={downloadJPEG}>Download Your Design</a>
+                <a className="download-btn" onClick={downloadJPEG}>Download Your Design</a>
             </div>
         </div>
     </div>
