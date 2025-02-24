@@ -81,19 +81,19 @@ export default function Home(data: ICard) {
     <div className="main-wrp">
       {/* Dynamic SEO Metadata */}
       <Head>
-        <title>{`${data.basicInfo?.name} | Searchmaar.com`}</title>
-        <meta name="description" content={data.basicInfo?.desc} />
-        <meta property="og:title" content={data.basicInfo?.name} />
-        <meta property="og:description" content={data.basicInfo?.desc} />
-        <meta property="og:image" content={`https://searchmaar.com${data.image?.profileImage}`} />
+        <title>Visualizer Demo | HardReload</title>
+        <meta name="description" content="This is a demo for visualizer." />
+        <meta property="og:title" content="Visualizer Demo | HardReload" />
+        <meta property="og:description" content="This is a demo for visualizer." />
+        <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://searchmaar.com/${data.shareableUrl}`} />
+        <meta property="og:url" content="https://visualizer-demo.vercel.app" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="SMart Card" />
-        <meta name="twitter:title" content={data.basicInfo?.name} />
-        <meta name="twitter:description" content={data.basicInfo?.desc} />
-        <meta name="twitter:image" content={`https://searchmaar.com${data.image?.profileImage}`} />
+        <meta name="twitter:title" content="Visualizer Demo | HardReload" />
+        <meta name="twitter:description" content="This is a demo for visualizer." />
+        <meta name="twitter:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
       </Head>
       <h1>Home Glazer - Visualiser Demo</h1>
       <div>
@@ -134,10 +134,10 @@ export default function Home(data: ICard) {
               <div className="choose-color-wrp">
                   <h2>Choose Color</h2>
                   <div>
-                      <div onClick={()=>{changeColor("a13f3f")}} style={{background: '#a13f3f'}}></div>
-                      <div onClick={()=>{changeColor("4e5e87")}} style={{background: '#4e5e87'}}></div>
-                      <div onClick={()=>{changeColor("45a339")}} style={{background: '#45a339'}}></div>
-                      <div onClick={()=>{changeColor("8d5f1d")}} style={{background: '#8d5f1d'}}></div>
+                      <div onClick={()=>{changeColor("793D17")}} style={{background: '#793D17'}}></div>
+                      <div onClick={()=>{changeColor("E8E9E4")}} style={{background: '#E8E9E4'}}></div>
+                      <div onClick={()=>{changeColor("B9BCCB")}} style={{background: '#B9BCCB'}}></div>
+                      <div onClick={()=>{changeColor("243156")}} style={{background: '#243156'}}></div>
                   </div>
               </div>
               <a className="download-btn" onClick={(e)=>{downloadJPEG(e)}}>Download Your Design</a>
