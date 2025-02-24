@@ -1,6 +1,6 @@
 import { MouseEvent, useRef, useState } from "react";
 import domtoimage from "dom-to-image-more";
-import { GetServerSideProps } from "next";
+// import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 // interface ICard {
