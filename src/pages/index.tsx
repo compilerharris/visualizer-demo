@@ -80,7 +80,7 @@ export default function Home(data: ICard) {
     <div className="main-wrp">
       {/* Dynamic SEO Metadata */}
       <Head>
-        <title>{`${data.basicInfo.name}Searchmaar.com`}</title>
+        {/* <title>{`${data.basicInfo.name}Searchmaar.com`}</title> */}
         {/* <meta name="description" content={seo.description} /> */}
         {/* <meta property="og:title" content={seo.title} /> */}
         {/* <meta property="og:description" content={seo.description} /> */}
