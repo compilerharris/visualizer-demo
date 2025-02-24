@@ -84,7 +84,7 @@ export default function Home(data: ICard) {
         {/* <meta name="description" content={seo.description} /> */}
         {/* <meta property="og:title" content={seo.title} /> */}
         {/* <meta property="og:description" content={seo.description} /> */}
-        <meta property="og:image" content={`https://searchmaar.com/${data.image.profileImage}`} />
+        <meta property="og:image" content={`https://searchmaar.com/${data.image?.profileImage}`} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yourdomain.com/employees" />
 
@@ -92,7 +92,7 @@ export default function Home(data: ICard) {
         <meta name="twitter:card" content="summary_large_image" />
         {/* <meta name="twitter:title" content={seo.title} /> */}
         {/* <meta name="twitter:description" content={seo.description} /> */}
-        <meta name="twitter:image" content={`https://searchmaar.com/${data.image.profileImage}`} />
+        <meta name="twitter:image" content={`https://searchmaar.com/${data.image?.profileImage}`} />
       </Head>
       <h1>Home Glazer - Visualiser Demo</h1>
       <div>
