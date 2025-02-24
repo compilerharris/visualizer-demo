@@ -85,15 +85,15 @@ export default function Home(data: ICard) {
         <meta name="description" content={data.basicInfo?.desc} />
         <meta property="og:title" content={data.basicInfo?.name} />
         <meta property="og:description" content={data.basicInfo?.desc} />
-        <meta property="og:image" content={`https://searchmaar.com/${data.image?.profileImage}`} />
+        <meta property="og:image" content={`https://searchmaar.com${data.image?.profileImage}`} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://searchmaar.com/${data.basicInfo?.desc}`} />
+        <meta property="og:url" content={`https://searchmaar.com/${data.shareableUrl}`} />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="SMart Card" />
         <meta name="twitter:title" content={data.basicInfo?.name} />
         <meta name="twitter:description" content={data.basicInfo?.desc} />
-        <meta name="twitter:image" content={`https://searchmaar.com/${data.image?.profileImage}`} />
+        <meta name="twitter:image" content={`https://searchmaar.com${data.image?.profileImage}`} />
       </Head>
       <h1>Home Glazer - Visualiser Demo</h1>
       <div>
