@@ -80,18 +80,18 @@ export default function Home(data: ICard) {
     <div className="main-wrp">
       {/* Dynamic SEO Metadata */}
       <Head>
-        {/* <title>{`${data.basicInfo.name}Searchmaar.com`}</title> */}
-        {/* <meta name="description" content={seo.description} /> */}
-        {/* <meta property="og:title" content={seo.title} /> */}
-        {/* <meta property="og:description" content={seo.description} /> */}
+        <title>{`${data.basicInfo?.name}Searchmaar.com`}</title>
+        <meta name="description" content={data.basicInfo?.desc} />
+        <meta property="og:title" content={data.basicInfo?.name} />
+        <meta property="og:description" content={data.basicInfo?.desc} />
         <meta property="og:image" content={`https://searchmaar.com/${data.image?.profileImage}`} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourdomain.com/employees" />
+        <meta property="og:url" content={`https://searchmaar.com/${data.basicInfo?.desc}`} />
 
         {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        {/* <meta name="twitter:title" content={seo.title} /> */}
-        {/* <meta name="twitter:description" content={seo.description} /> */}
+        <meta name="twitter:card" content="SMart Card" />
+        <meta name="twitter:title" content={data.basicInfo?.name} />
+        <meta name="twitter:description" content={data.basicInfo?.desc} />
         <meta name="twitter:image" content={`https://searchmaar.com/${data.image?.profileImage}`} />
       </Head>
       <h1>Home Glazer - Visualiser Demo</h1>
