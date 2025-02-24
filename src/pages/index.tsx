@@ -3,7 +3,39 @@ import domtoimage from "dom-to-image-more";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 
-export default function Home({data, seo}: any) {
+interface ICard {
+  image:{profileImage:""},
+  basicInfo:{
+    name: "",
+    jobTitle: "",
+    businessName: "",
+    services: "",
+    desc: "",
+    cat: "",
+    type: "",
+  },
+  contactUs:{
+    personalMobile: "",
+    wpNumber: "",
+    websiteUrl: "",
+    email: "",
+  },
+  timing: {
+  },
+  address:{
+  },
+  social:{
+  },
+  tags:"",
+  plan: 'paid',
+  createdBy: "",
+  device: '',
+  requestTime: "",
+  isApproved: false,
+  expiry: "oneYearLater"
+}
+
+export default function Home(data: ICard) {
   const divRef = useRef<HTMLDivElement>(null);
   const scaleFactor = 1;
   const headerHeight = 50;
@@ -29,7 +61,7 @@ export default function Home({data, seo}: any) {
     }
   };
 
-  const downloadJPEG = async (e: any) => {
+  const downloadJPEG = async (e: Event) => {
     e.preventDefault();
     if (!divRef.current) return;
 
@@ -42,7 +74,7 @@ export default function Home({data, seo}: any) {
         link.click();
         document.body.removeChild(link);
       })
-      .catch((error: any) => {
+      .catch((error: Error) => {
         console.error("Error generating JPEG:", error);
       });
   };
@@ -51,19 +83,19 @@ export default function Home({data, seo}: any) {
     <div className="main-wrp">
       {/* Dynamic SEO Metadata */}
       <Head>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
+        <title>{`${data.basicInfo.name}Searchmaar.com`}</title>
+        {/* <meta name="description" content={seo.description} /> */}
+        {/* <meta property="og:title" content={seo.title} /> */}
+        {/* <meta property="og:description" content={seo.description} /> */}
         <meta property="og:image" content={`https://searchmaar.com/${data.image.profileImage}`} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yourdomain.com/employees" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seo.title} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={seo.image} />
+        {/* <meta name="twitter:title" content={seo.title} /> */}
+        {/* <meta name="twitter:description" content={seo.description} /> */}
+        <meta name="twitter:image" content={`https://searchmaar.com/${data.image.profileImage}`} />
       </Head>
       <h1>Home Glazer - Visualiser Demo</h1>
       <div>
@@ -110,7 +142,7 @@ export default function Home({data, seo}: any) {
                       <div onClick={()=>{changeColor("8d5f1d")}} style={{background: '#8d5f1d'}}></div>
                   </div>
               </div>
-              <a className="download-btn" onClick={downloadJPEG}>Download Your Design</a>
+              <a className="download-btn" onClick={()=>{downloadJPEG}}>Download Your Design</a>
           </div>
       </div>
     </div>
@@ -123,18 +155,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch("https://searchmaar.com/api/sharable-sm-card/searchmaar");
   const data = await res.json();
 
-  // Simulating SEO data from API response
-  const seo = {
-    title: "Employee Directory | Our Team Members",
-    description:
-      "Explore our team members and their roles in the company. Find out more about our skilled professionals.",
-    image: "https://via.placeholder.com/1200x630.png?text=Employee+Directory", // Replace with real image URL
-  };
-
   return {
     props: {
-      data: data,
-      seo,
-    },
+      data: data
+    }
   };
 };
