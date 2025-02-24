@@ -26,10 +26,11 @@ interface ICard {
   tags:"",
   plan: 'paid',
   createdBy: "",
+  shareableUrl: "",
   device: '',
   requestTime: "",
   isApproved: false,
-  expiry: "oneYearLater"
+  expiry: ""
 }
 
 export default function Home(data: ICard) {
@@ -80,7 +81,7 @@ export default function Home(data: ICard) {
     <div className="main-wrp">
       {/* Dynamic SEO Metadata */}
       <Head>
-        <title>{`${data.basicInfo?.name}Searchmaar.com`}</title>
+        <title>{`${data.basicInfo?.name} | Searchmaar.com`}</title>
         <meta name="description" content={data.basicInfo?.desc} />
         <meta property="og:title" content={data.basicInfo?.name} />
         <meta property="og:description" content={data.basicInfo?.desc} />
@@ -153,8 +154,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const data = await res.json();
 
   return {
-    props: {
-      data: data
-    }
+    props: data
   };
 };
