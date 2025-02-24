@@ -20,12 +20,9 @@ interface ICard {
     websiteUrl: "",
     email: "",
   },
-  timing: {
-  },
-  address:{
-  },
-  social:{
-  },
+  timing: "",
+  address:"",
+  social:"",
   tags:"",
   plan: 'paid',
   createdBy: "",
