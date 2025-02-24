@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 import domtoimage from "dom-to-image-more";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
@@ -58,7 +58,7 @@ export default function Home(data: ICard) {
     }
   };
 
-  const downloadJPEG = async (e: Event) => {
+  const downloadJPEG = async (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (!divRef.current) return;
 
@@ -139,7 +139,7 @@ export default function Home(data: ICard) {
                       <div onClick={()=>{changeColor("8d5f1d")}} style={{background: '#8d5f1d'}}></div>
                   </div>
               </div>
-              <a className="download-btn" onClick={()=>{downloadJPEG}}>Download Your Design</a>
+              <a className="download-btn" onClick={(e)=>{downloadJPEG(e)}}>Download Your Design</a>
           </div>
       </div>
     </div>
