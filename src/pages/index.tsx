@@ -147,12 +147,8 @@ export default function Home() {
                     })
                   }}>
                       <span style={{backgroundColor: obj.rightWall.color}}></span>
-                      <p>Left Wall</p>
+                      <p>Right Wall</p>
                   </div>
-                  {/* <div className="wall-2-wrp" style={{border: '0'}}>
-                      <span></span>
-                      <p>Wall 2</p>
-                  </div> */}
               </div> 
               <div className="choose-color-wrp">
                   <h2>Choose Color</h2>
