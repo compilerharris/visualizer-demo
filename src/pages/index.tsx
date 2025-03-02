@@ -42,7 +42,11 @@ export default function Home() {
       isSelected: false,
       color: '#e3e3e3'
     },
-    wall: {
+    leftWall: {
+      isSelected: false,
+      color: '#e3e3e3'
+    },
+    rightWall: {
       isSelected: false,
       color: '#e3e3e3'
     }
@@ -52,9 +56,13 @@ export default function Home() {
       setObj({...obj,
         roof: {...obj.roof, color: `#${color}`},
       })
+    }else if(obj.leftWall.isSelected){
+      setObj({...obj,
+        leftWall: {...obj.leftWall, color: `#${color}`},
+      })
     }else{
       setObj({...obj,
-        wall: {...obj.wall, color: `#${color}`},
+        rightWall: {...obj.rightWall, color: `#${color}`},
       })
     }
   };
@@ -63,7 +71,9 @@ export default function Home() {
     e.preventDefault();
     if (!divRef.current) return;
 
-    domtoimage.toJpeg(divRef.current, { quality: 1, width: 335 * scaleFactor, height: (500 * scaleFactor) + headerHeight }) // High-quality JPEG
+    const iWidth = 600;
+    const iHeight = 375;
+    domtoimage.toJpeg(divRef.current, { quality: 1, width: iWidth * scaleFactor, height: (iHeight * scaleFactor) + headerHeight }) // High-quality JPEG
       .then((imgData: string) => {
         const link = document.createElement("a");
         link.href = imgData;
@@ -100,8 +110,9 @@ export default function Home() {
           <div className="left-wrp" ref={divRef} id="downloadable">
               <h2>Your Room</h2>
               <div className="img-wrp">
-                  <img className="room" src="/assets/images/main.png" />
-                  <img src="/assets/images/wall.png" style={{backgroundColor: obj.wall.color}} />
+                  <img className="room" src="/assets/images/bedroom.jpg" />
+                  <img src="/assets/images/left-wall.png" style={{backgroundColor: obj.leftWall.color}} />
+                  <img src="/assets/images/right-wall.png" style={{backgroundColor: obj.rightWall.color}} />
                   <img src="/assets/images/roof.png" style={{backgroundColor: obj.roof.color}} />
               </div> 
           </div>
@@ -111,20 +122,32 @@ export default function Home() {
                   <div className="roof-wrp" style={{backgroundColor: obj.roof.isSelected?'#1a9bd74d':''}} onClick={()=>{
                     setObj({...obj,
                       roof: {...obj.roof, isSelected: true},
-                      wall: {...obj.wall, isSelected: false},
+                      leftWall: {...obj.leftWall, isSelected: false},
+                      rightWall: {...obj.rightWall, isSelected: false},
                     })
                   }} >
                       <span style={{backgroundColor: obj.roof.color}}></span>
                       <p>Roof</p>
                   </div>
-                  <div className="wall-1-wrp" style={{border: '0',backgroundColor: obj.wall.isSelected?'#1a9bd74d':''}} onClick={()=>{
+                  <div style={{backgroundColor: obj.leftWall.isSelected?'#1a9bd74d':''}} onClick={()=>{
                     setObj({...obj,
                       roof: {...obj.roof, isSelected: false},
-                      wall: {...obj.wall, isSelected: true},
+                      leftWall: {...obj.leftWall, isSelected: true},
+                      rightWall: {...obj.rightWall, isSelected: false},
                     })
                   }}>
-                      <span style={{backgroundColor: obj.wall.color}}></span>
-                      <p>Wall 1</p>
+                      <span style={{backgroundColor: obj.leftWall.color}}></span>
+                      <p>Left Wall</p>
+                  </div>
+                  <div style={{border: '0',backgroundColor: obj.rightWall.isSelected?'#1a9bd74d':''}} onClick={()=>{
+                    setObj({...obj,
+                      roof: {...obj.roof, isSelected: false},
+                      leftWall: {...obj.leftWall, isSelected: false},
+                      rightWall: {...obj.rightWall, isSelected: true},
+                    })
+                  }}>
+                      <span style={{backgroundColor: obj.rightWall.color}}></span>
+                      <p>Left Wall</p>
                   </div>
                   {/* <div className="wall-2-wrp" style={{border: '0'}}>
                       <span></span>

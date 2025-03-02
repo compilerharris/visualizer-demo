@@ -33,8 +33,10 @@ h2{
 }
 .img-wrp{
   position: relative;
-  width: 335px;
-  height: 500px;
+  /* width: 335px;
+  height: 500px; */
+  width: 600px;
+  height: 375px;
 }
 .room{
   position: absolute;
@@ -68,7 +70,7 @@ h2{
   width: 230px;
   display: flex;
   align-items: center;
-  padding: 20px 40px;
+  padding: 20px 30px;
   cursor: pointer;
   transition: all .5s ease;
 }
