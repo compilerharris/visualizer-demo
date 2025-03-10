@@ -153,10 +153,14 @@ export default function Home() {
               <div className="choose-color-wrp">
                   <h2>Choose Color</h2>
                   <div>
-                      <div onClick={()=>{changeColor("793D17")}} style={{background: '#793D17'}}></div>
+                      <div onClick={()=>{changeColor("dd6e27")}} style={{background: '#dd6e27'}}></div>
+                      <div onClick={()=>{changeColor("aace63")}} style={{background: '#aace63'}}></div>
+                      <div onClick={()=>{changeColor("4a64e6")}} style={{background: '#4a64e6'}}></div>
+                      <div onClick={()=>{changeColor("243156")}} style={{background: '#243156'}}></div>
+                      {/* <div onClick={()=>{changeColor("793D17")}} style={{background: '#793D17'}}></div>
                       <div onClick={()=>{changeColor("E8E9E4")}} style={{background: '#E8E9E4'}}></div>
                       <div onClick={()=>{changeColor("B9BCCB")}} style={{background: '#B9BCCB'}}></div>
-                      <div onClick={()=>{changeColor("243156")}} style={{background: '#243156'}}></div>
+                      <div onClick={()=>{changeColor("243156")}} style={{background: '#243156'}}></div> */}
                   </div>
               </div>
               <a className="download-btn" onClick={(e)=>{downloadJPEG(e)}}>Download Your Design</a>
