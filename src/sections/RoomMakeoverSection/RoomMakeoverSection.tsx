@@ -8,7 +8,7 @@ export const RoomMakeoverSection = () => {
       </h2>
 
       <p className="font-['Quicksand',Helvetica] font-light text-[#595959] text-xl">
-        Send us a message, and we'll respond soon!
+        Send us a message, and we&apos;ll respond soon!
       </p>
 
       <p className="font-['Quicksand',Helvetica] font-light text-[#595959] text-xl max-w-[340px]">

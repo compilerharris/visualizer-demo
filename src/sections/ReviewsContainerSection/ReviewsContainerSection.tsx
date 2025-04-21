@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../components/carousel";
+import Image from "next/image";
 
 export const ReviewsContainerSection = () => {
   // Data for carousel images
@@ -33,7 +34,7 @@ export const ReviewsContainerSection = () => {
           <CarouselContent>
             {carouselImages.map((image, index) => (
               <CarouselItem key={index} className="flex justify-center">
-                <img
+                <Image
                   className="w-[320px] h-[350px]"
                   alt={image.alt}
                   src={image.src}
@@ -63,7 +64,7 @@ export const ReviewsContainerSection = () => {
           <span className="font-['Quicksand',Helvetica] font-normal text-[21px]">
             View All Gallery
           </span>
-          <img
+          <Image
             className="w-[35px] h-[35px] ml-[13px]"
             alt="Right arrow"
             src="/assets/images/right-arrow-svgrepo-com-1.svg"

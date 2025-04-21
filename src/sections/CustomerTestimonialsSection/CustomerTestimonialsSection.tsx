@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../components/carousel";
+import Image from "next/image";
 
 export const CustomerTestimonialsSection = () => {
   // Data for paint brand cards
@@ -37,7 +38,7 @@ export const CustomerTestimonialsSection = () => {
                         backgroundImage: `url(${brand.backgroundImage})`,
                       }}
                     >
-                      <img
+                      <Image
                         className="absolute w-[78px] h-[67px] top-[109px] left-[34px] object-cover"
                         alt={brand.logoAlt}
                         src={brand.logoSrc}
@@ -72,7 +73,7 @@ export const CustomerTestimonialsSection = () => {
           <span className="font-['Quicksand',Helvetica] font-normal text-black text-[21.3px] text-center leading-normal">
             View All Paint Brands
           </span>
-          <img
+          <Image
             className="w-[34.67px] h-[34.67px]"
             alt="Right arrow"
             src="/assets/images/right-arrow-svgrepo-com-1.svg"

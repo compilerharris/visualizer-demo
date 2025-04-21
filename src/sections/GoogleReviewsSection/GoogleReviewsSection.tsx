@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../components/carousel";
+import Image from "next/image";
 
 export const GoogleReviewsSection = () => {
   // Data for the carousel images
@@ -39,7 +40,7 @@ export const GoogleReviewsSection = () => {
                 {slide.images.map((image: {src: string, alt:string}, imgIndex: number) => (
                   <Card key={imgIndex} className="border-none bg-transparent">
                     <CardContent className="p-0">
-                      <img
+                      <Image
                         className="w-[320.41px] h-[350.26px]"
                         alt={image.alt}
                         src={image.src}
@@ -74,7 +75,7 @@ export const GoogleReviewsSection = () => {
           <span className="font-['Quicksand',Helvetica] font-normal text-[21.3px] text-center tracking-[0] leading-normal">
             View All Gallery
           </span>
-          <img
+          <Image
             className="w-[34.67px] h-[34.67px]"
             alt="Right arrow"
             src="/assets/images/right-arrow-svgrepo-com-1.svg"

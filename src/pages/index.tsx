@@ -16,6 +16,7 @@ import { DesignInsightsSection } from "@/sections/DesignInsightsSection";
 import { FAQSection } from "@/sections/FAQSection";
 import { FooterSection } from "@/sections/FooterSection/FooterSection";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/navigation-menu";
+import Image from "next/image";
 
 // interface ICard {
 //   image:{profileImage:""},
@@ -109,7 +110,7 @@ export default function Home() {
               {heroSlides.map((slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="relative">
-                    <img
+                    <Image
                       className="w-full h-[605px] object-cover"
                       alt="Hero Background"
                       src={slide.image}
@@ -123,7 +124,7 @@ export default function Home() {
                         <span className="font-['Quicksand',Helvetica] font-normal text-[24.2px]">
                           {slide.buttonText}
                         </span>
-                        <img
+                        <Image
                           className="w-[39.25px] h-[39.25px]"
                           alt="Right arrow"
                           src="/assets/images/right-arrow-svgrepo-com-1.svg"
@@ -142,7 +143,7 @@ export default function Home() {
           {/* Navigation Bar */}
           <div className="fixed top-0 left-0 right-0 w-full h-[60px] bg-[#ffffffa6] shadow-[0px_4px_4px_#ffbdd51a] backdrop-blur-[2px] backdrop-brightness-[100%] z-50">
             <div className="container mx-auto flex items-center justify-between">
-              <img
+              <Image
                 className="w-24 h-[37px] my-3 object-cover"
                 alt="Home glazer logo"
                 src="/assets/images/home-glazer-logo-1.png"
@@ -165,27 +166,27 @@ export default function Home() {
           {/* Bottom Image */}
           <div className="absolute w-[700px] h-[65px] bottom-0 left-1/2 -translate-x-1/2 shadow-[0px_3.76px_8.77px_#00000040]">
             <div className="relative w-full h-full">
-              <img
+              <Image
                 className="absolute w-[277px] h-[65px] top-0 left-0"
                 alt="Rectangle"
                 src="/assets/images/rectangle.png"
               />
-              <img
+              <Image
                 className="absolute w-[449px] h-[38px] top-0 left-[251px]"
                 alt="Vector"
                 src="/assets/images/vector-3.svg"
               />
-              <img
+              <Image
                 className="absolute w-[283px] h-[15px] top-0 left-0.5"
                 alt="Group"
                 src="/assets/images/group.png"
               />
-              <img
+              <Image
                 className="absolute w-[49px] h-4 top-11 left-[129px] bg-blend-hard-light"
                 alt="Vector"
                 src="/assets/images/vector-1.svg"
               />
-              <img
+              <Image
                 className="absolute w-[34px] h-[26px] top-[34px] left-[85px] bg-blend-hard-light"
                 alt="Vector"
                 src="/assets/images/vector.svg"
@@ -225,12 +226,12 @@ export default function Home() {
           <div className="w-full pb-20 mt-8">
             <div className="container mx-auto relative">
               <div className="absolute left-0 bottom-[-110px] w-full">
-                <img
+                <Image
                   className="w-[771px] h-[500px]"
                   alt="Vector"
                   src="/assets/images/vector-17.svg"
                 />
-                <img
+                <Image
                   className="absolute w-[731px] h-[485px] top-0 right-0"
                   alt="Vector"
                   src="/assets/images/vector-23.svg"

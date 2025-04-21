@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../components/carousel";
+import Image from "next/image";
 
 export const ReviewsSection = () => {
   // Review data for mapping
@@ -76,7 +77,7 @@ export const ReviewsSection = () => {
           <span className="[font-family:'Quicksand',Helvetica] font-normal text-[21.3px] text-center">
             View All Reviews
           </span>
-          <img
+          <Image
             className="w-[34.67px] h-[34.67px]"
             alt="Right arrow"
             src="/assets/images/right-arrow-svgrepo-com-1.svg"
@@ -91,11 +92,11 @@ export const ReviewsSection = () => {
           </CarouselPrevious>
 
           <CarouselContent className="gap-[28.29px] py-[7.07px]">
-            {reviews.map((review, index) => (
+            {reviews.map((review) => (
               <CarouselItem key={review.id} className="basis-1/2 pl-0">
                 <Card className="min-w-[265.19px] bg-white rounded-[35.36px] shadow-[0px_3.54px_8.84px_#5252521a]">
                   <CardContent className="flex flex-col items-start justify-center gap-[14.14px] p-[28.29px]">
-                    <img
+                    <Image
                       className="w-[53.04px] h-[34.41px]"
                       alt="Quotation mark"
                       src="/assets/images/-.svg"

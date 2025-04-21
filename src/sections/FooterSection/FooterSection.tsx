@@ -2,6 +2,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import React from "react";
 import { Badge } from "../../components/badge";
 import { Separator } from "../../components/separator";
+import Image from "next/image";
 
 // Define data for footer columns to make the code more maintainable
 const contactLinks = [
@@ -40,7 +41,7 @@ export const FooterSection = () => {
       <div className="relative w-full h-[416px] bg-[#1a1c1d] overflow-hidden">
         <div className="flex w-[1120px] items-start justify-between mx-auto pt-14">
           <div className="flex w-[364px] items-center gap-16 relative">
-            <img
+            <Image
               className="relative w-[104px] h-[41px] object-cover"
               alt="Home glazer logo"
               src="/assets/images/home-glazer-logo-1.png"
@@ -48,7 +49,7 @@ export const FooterSection = () => {
 
             <div className="relative w-[139.3px] h-[35.18px]">
               <div className="absolute w-[35px] h-[35px] top-0 left-[104px] rounded-[17.59px] border-[0.7px] border-solid border-white">
-                <img
+                <Image
                   className="absolute w-[19px] h-[13px] top-[11px] left-2"
                   alt="Icon"
                   src="/assets/images/icon-2.svg"
@@ -56,7 +57,7 @@ export const FooterSection = () => {
               </div>
 
               <div className="absolute w-[35px] h-[35px] top-0 left-[52px] rounded-[17.59px] border-[0.7px] border-solid border-white">
-                <img
+                <Image
                   className="absolute w-5 h-4 top-[9px] left-[7px]"
                   alt="Icon"
                   src="/assets/images/icon.svg"
@@ -64,7 +65,7 @@ export const FooterSection = () => {
               </div>
 
               <div className="absolute w-[35px] h-[35px] top-0 left-0 rounded-[17.59px] border-[0.7px] border-solid border-white">
-                <img
+                <Image
                   className="absolute w-2.5 h-[19px] top-2 left-3"
                   alt="Icon"
                   src="/assets/images/icon-1.svg"
@@ -144,7 +145,7 @@ export const FooterSection = () => {
             </div>
           </div>
 
-          <img
+          <Image
             className="absolute w-[351px] h-1.5 top-[70px] left-[46px]"
             alt="Vector"
             src="/assets/images/vector-2.svg"

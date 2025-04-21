@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../components/carousel";
+import Image from "next/image";
 
 export const QualityPointsSection = () => {
   // Data for the carousel
@@ -33,7 +34,7 @@ export const QualityPointsSection = () => {
               <CarouselItem key={index}>
                 <Card className="w-[644px] h-[350px] border-none bg-transparent">
                   <CardContent className="p-0 h-full">
-                    <img
+                    <Image
                       className="w-full h-[340px] object-cover mt-2.5"
                       alt="Team members working together"
                       src={slide.image}
@@ -66,7 +67,7 @@ export const QualityPointsSection = () => {
           <span className="font-normal text-[21.3px] font-['Quicksand',Helvetica]">
             {carouselData[0].buttonText}
           </span>
-          <img
+          <Image
             className="w-[34.67px] h-[34.67px]"
             alt="Right arrow"
             src="/assets/images/right-arrow-svgrepo-com-1.svg"

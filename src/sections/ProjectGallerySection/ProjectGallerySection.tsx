@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "../../components/button";
+import Image from "next/image";
 
 export const ProjectGallerySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,7 +45,7 @@ export const ProjectGallerySection = () => {
           <span className="[font-family:'Quicksand',Helvetica] font-normal text-[21.3px] text-center leading-normal">
             Explore All Color
           </span>
-          <img
+          <Image
             className="w-[34.67px] h-[34.67px]"
             alt="Right arrow svgrepo"
             src="/assets/images/right-arrow-svgrepo-com-1.svg"
@@ -65,7 +66,7 @@ export const ProjectGallerySection = () => {
 
         <div className="w-[644px] h-[350px] relative">
           {galleryImages.map((image, index) => (
-            <img
+            <Image
               key={index}
               className={`absolute w-full h-full object-cover transition-opacity duration-300 ${
                 index === activeIndex ? "opacity-100" : "opacity-0"
@@ -98,7 +99,7 @@ export const ProjectGallerySection = () => {
                 : "opacity-50"
             }`}
           >
-            <img
+            <Image
               src={thumb.src}
               alt={thumb.alt}
               className="w-full h-full object-cover"
