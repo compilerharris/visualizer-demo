@@ -1,0 +1,1 @@
+export { RoomMakeoverSection } from "./RoomMakeoverSection";

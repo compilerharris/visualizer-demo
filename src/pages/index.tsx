@@ -1,7 +1,21 @@
-import { MouseEvent, useRef, useState } from "react";
-import domtoimage from "dom-to-image-more";
-// import { GetServerSideProps } from "next";
+
 import Head from "next/head";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/carousel";
+import { Button } from "@/components/button";
+import { OurServicesSection } from "@/sections/OurServicesSection";
+import { MainContentSection } from "@/sections/MainContentSection";
+import { WhyChooseUsSection } from "@/sections/WhyChooseUsSection";
+import { RoomMakeoverSection } from "@/sections/RoomMakeoverSection";
+import { ContactUsSection } from "@/sections/ContactUsSection";
+import { GoogleReviewsSection } from "@/sections/GoogleReviewsSection";
+import { ProjectGallerySection } from "@/sections/ProjectGallerySection";
+import { CustomerTestimonialsSection } from "@/sections/CustomerTestimonialsSection";
+import { QualityPointsSection } from "@/sections/QualityPointsSection";
+import { ReviewsSection } from "@/sections/ReviewsSection";
+import { DesignInsightsSection } from "@/sections/DesignInsightsSection";
+import { FAQSection } from "@/sections/FAQSection";
+import { FooterSection } from "@/sections/FooterSection/FooterSection";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/navigation-menu";
 
 // interface ICard {
 //   image:{profileImage:""},
@@ -34,61 +48,41 @@ import Head from "next/head";
 // }
 
 export default function Home() {
-  const divRef = useRef<HTMLDivElement>(null);
-  const scaleFactor = 1;
-  const headerHeight = 50;
-  const [obj, setObj] = useState({
-    roof: {
-      isSelected: false,
-      color: '#e3e3e3'
-    },
-    leftWall: {
-      isSelected: false,
-      color: '#e3e3e3'
-    },
-    rightWall: {
-      isSelected: false,
-      color: '#e3e3e3'
-    }
-  });
-  const changeColor = (color: string) => {
-    if(obj.roof.isSelected){
-      setObj({...obj,
-        roof: {...obj.roof, color: `#${color}`},
-      })
-    }else if(obj.leftWall.isSelected){
-      setObj({...obj,
-        leftWall: {...obj.leftWall, color: `#${color}`},
-      })
-    }else{
-      setObj({...obj,
-        rightWall: {...obj.rightWall, color: `#${color}`},
-      })
-    }
-  };
 
-  const downloadJPEG = async (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (!divRef.current) return;
+  // Navigation menu items
+  const navItems = [
+    "Home",
+    "Our Services",
+    "Painting Blogs",
+    "About Us",
+    "Enquire Now",
+    "Budget Calculator",
+  ];
 
-    const iWidth = 600;
-    const iHeight = 375;
-    domtoimage.toJpeg(divRef.current, { quality: 1, width: iWidth * scaleFactor, height: (iHeight * scaleFactor) + headerHeight }) // High-quality JPEG
-      .then((imgData: string) => {
-        const link = document.createElement("a");
-        link.href = imgData;
-        link.download = "download.jpg";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      })
-      .catch((error: Error) => {
-        console.error("Error generating JPEG:", error);
-      });
-  };
+  // Hero slider data
+  const heroSlides = [
+    {
+      id: 1,
+      image: "/assets/images/rectangle-94.png",
+      title: "Expert Painting for Every Spaaace",
+      buttonText: "Get in touch",
+    },
+    {
+      id: 2,
+      image: "/assets/images/rectangle-94.png",
+      title: "Transform Your Space with Color",
+      buttonText: "Get in touch",
+    },
+    {
+      id: 3,
+      image: "/assets/images/rectangle-94.png",
+      title: "Professional Painting Services",
+      buttonText: "Get in touch",
+    },
+  ];
   
   return (
-    <div className="main-wrp">
+    <div className="bg-white flex flex-row justify-center w-full">
       {/* Dynamic SEO Metadata */}
       <Head>
         <title>Visualizer Demo | HardReload</title>
@@ -106,67 +100,216 @@ export default function Home() {
         <meta name="twitter:description" content="This is a demo for visualizer." />
         {/* <meta name="twitter:image" content="https://netbizlabs.com/a+content/image1.jpg" /> */}
         <meta name="twitter:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
-      </Head>
-      <h1>Home Glazer - Visualiser Demo</h1>
-      <div>
-          <div className="left-wrp" ref={divRef} id="downloadable">
-              <h2>Your Room</h2>
-              <div className="img-wrp">
-                  <img className="room" src="/assets/images/bedroom.jpg" />
-                  <img src="/assets/images/left-wall.png" style={{backgroundColor: obj.leftWall.color}} />
-                  <img src="/assets/images/right-wall.png" style={{backgroundColor: obj.rightWall.color}} />
-                  <img src="/assets/images/roof.png" style={{backgroundColor: obj.roof.color}} />
-              </div> 
+      </Head> 
+      <div className="bg-white overflow-hidden w-full relative">
+        {/* Hero Section */}
+        <div className="relative w-full">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {heroSlides.map((slide) => (
+                <CarouselItem key={slide.id}>
+                  <div className="relative">
+                    <img
+                      className="w-full h-[605px] object-cover"
+                      alt="Hero Background"
+                      src={slide.image}
+                    />
+                    <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                      <h1 className="font-['Quicksand',Helvetica] font-semibold text-white text-[56px] text-center tracking-[0] leading-normal [-webkit-text-stroke:2px_#00000033] mb-12">
+                        {slide.title}
+                      </h1>
+
+                      <Button className="h-[60px] gap-[15px] px-[21px] py-[12px] bg-[#dbe7ec] rounded-[39.25px] text-black hover:bg-[#c5d6de]">
+                        <span className="font-['Quicksand',Helvetica] font-normal text-[24.2px]">
+                          {slide.buttonText}
+                        </span>
+                        <img
+                          className="w-[39.25px] h-[39.25px]"
+                          alt="Right arrow"
+                          src="/assets/images/right-arrow-svgrepo-com-1.svg"
+                        />
+                      </Button>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <CarouselPrevious className="absolute left-4 z-50" />
+            <CarouselNext className="absolute right-4 z-50" />
+          </Carousel>
+
+          {/* Navigation Bar */}
+          <div className="fixed top-0 left-0 right-0 w-full h-[60px] bg-[#ffffffa6] shadow-[0px_4px_4px_#ffbdd51a] backdrop-blur-[2px] backdrop-brightness-[100%] z-50">
+            <div className="container mx-auto flex items-center justify-between">
+              <img
+                className="w-24 h-[37px] my-3 object-cover"
+                alt="Home glazer logo"
+                src="/assets/images/home-glazer-logo-1.png"
+              />
+
+              <NavigationMenu>
+                <NavigationMenuList className="flex items-center gap-[70px]">
+                  {navItems.map((item, index) => (
+                    <NavigationMenuItem key={index}>
+                      <div className="font-['Quicksand',Helvetica] font-medium text-[#ed276e] text-lg text-center">
+                        {item}
+                      </div>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
           </div>
-          <div className="right-wrp">
-              <h2>Change Your Room Color</h2>
-              <div className="wall-wrp">
-                  <div className="roof-wrp" style={{backgroundColor: obj.roof.isSelected?'#1a9bd74d':''}} onClick={()=>{
-                    setObj({...obj,
-                      roof: {...obj.roof, isSelected: true},
-                      leftWall: {...obj.leftWall, isSelected: false},
-                      rightWall: {...obj.rightWall, isSelected: false},
-                    })
-                  }} >
-                      <span style={{backgroundColor: obj.roof.color}}></span>
-                      <p>Roof</p>
-                  </div>
-                  <div style={{backgroundColor: obj.leftWall.isSelected?'#1a9bd74d':''}} onClick={()=>{
-                    setObj({...obj,
-                      roof: {...obj.roof, isSelected: false},
-                      leftWall: {...obj.leftWall, isSelected: true},
-                      rightWall: {...obj.rightWall, isSelected: false},
-                    })
-                  }}>
-                      <span style={{backgroundColor: obj.leftWall.color}}></span>
-                      <p>Left Wall</p>
-                  </div>
-                  <div style={{border: '0',backgroundColor: obj.rightWall.isSelected?'#1a9bd74d':''}} onClick={()=>{
-                    setObj({...obj,
-                      roof: {...obj.roof, isSelected: false},
-                      leftWall: {...obj.leftWall, isSelected: false},
-                      rightWall: {...obj.rightWall, isSelected: true},
-                    })
-                  }}>
-                      <span style={{backgroundColor: obj.rightWall.color}}></span>
-                      <p>Right Wall</p>
-                  </div>
-              </div> 
-              <div className="choose-color-wrp">
-                  <h2>Choose Color</h2>
-                  <div>
-                      <div onClick={()=>{changeColor("dd6e27")}} style={{background: '#dd6e27'}}></div>
-                      <div onClick={()=>{changeColor("aace63")}} style={{background: '#aace63'}}></div>
-                      <div onClick={()=>{changeColor("4a64e6")}} style={{background: '#4a64e6'}}></div>
-                      <div onClick={()=>{changeColor("243156")}} style={{background: '#243156'}}></div>
-                      {/* <div onClick={()=>{changeColor("793D17")}} style={{background: '#793D17'}}></div>
-                      <div onClick={()=>{changeColor("E8E9E4")}} style={{background: '#E8E9E4'}}></div>
-                      <div onClick={()=>{changeColor("B9BCCB")}} style={{background: '#B9BCCB'}}></div>
-                      <div onClick={()=>{changeColor("243156")}} style={{background: '#243156'}}></div> */}
-                  </div>
+
+          {/* Bottom Image */}
+          <div className="absolute w-[700px] h-[65px] bottom-0 left-1/2 -translate-x-1/2 shadow-[0px_3.76px_8.77px_#00000040]">
+            <div className="relative w-full h-full">
+              <img
+                className="absolute w-[277px] h-[65px] top-0 left-0"
+                alt="Rectangle"
+                src="/assets/images/rectangle.png"
+              />
+              <img
+                className="absolute w-[449px] h-[38px] top-0 left-[251px]"
+                alt="Vector"
+                src="/assets/images/vector-3.svg"
+              />
+              <img
+                className="absolute w-[283px] h-[15px] top-0 left-0.5"
+                alt="Group"
+                src="/assets/images/group.png"
+              />
+              <img
+                className="absolute w-[49px] h-4 top-11 left-[129px] bg-blend-hard-light"
+                alt="Vector"
+                src="/assets/images/vector-1.svg"
+              />
+              <img
+                className="absolute w-[34px] h-[26px] top-[34px] left-[85px] bg-blend-hard-light"
+                alt="Vector"
+                src="/assets/images/vector.svg"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Our Services Section */}
+        <div className="w-full mt-16">
+          <div className="flex flex-col items-center mb-8">
+            <h2 className="font-['Quicksand',Helvetica] font-medium text-[#ed276e] text-[40px] text-center">
+              Our Services
+            </h2>
+            <p className="font-['Quicksand',Helvetica] font-light text-[#3f505d] text-xl text-center">
+              Painting Your Dreams with Every Brushstroke
+            </p>
+          </div>
+
+          <div className="container mx-auto">
+            <OurServicesSection />
+            <MainContentSection />
+          </div>
+        </div>
+
+        {/* Why Choose Us Section */}
+        <div className="w-full mt-16 relative">
+          <div className="flex flex-col items-center mb-8">
+            <h2 className="font-['Quicksand',Helvetica] font-medium text-[#ed276e] text-[40px] text-center">
+              Why Choose Us?
+            </h2>
+            <p className="font-['Quicksand',Helvetica] font-light text-[#3f505d] text-xl text-center">
+              Tap a colour to see it on your bedroom wall.
+            </p>
+          </div>
+
+          <div className="w-full pb-20 mt-8">
+            <div className="container mx-auto relative">
+              <div className="absolute left-0 bottom-[-110px] w-full">
+                <img
+                  className="w-[771px] h-[500px]"
+                  alt="Vector"
+                  src="/assets/images/vector-17.svg"
+                />
+                <img
+                  className="absolute w-[731px] h-[485px] top-0 right-0"
+                  alt="Vector"
+                  src="/assets/images/vector-23.svg"
+                />
               </div>
-              <a className="download-btn" onClick={(e)=>{downloadJPEG(e)}}>Download Your Design</a>
+              <WhyChooseUsSection />
+            </div>
           </div>
+        </div>
+
+        {/* Get in Touch Section */}
+        <div className="w-full relative">
+          <div className="bg-[#f6f6f6] w-full py-16">
+            <div className="container mx-auto">
+              <div className="flex items-center justify-center">
+                <RoomMakeoverSection />
+                <ContactUsSection />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Google Reviews Section */}
+        <div className="w-full mt-16">
+          <GoogleReviewsSection />
+        </div>
+
+        {/* Project Gallery Section */}
+        <ProjectGallerySection />
+
+        {/* Customer Testimonials Section */}
+        <CustomerTestimonialsSection />
+
+        {/* Quality Points Section */}
+        <QualityPointsSection />
+
+        {/* Reviews Section */}
+        <ReviewsSection />
+
+        {/* Design Insights Section */}
+        <div className="w-full mt-16">
+          <div className="flex flex-col items-center mb-8">
+            <h2 className="font-['Quicksand',Helvetica] font-medium text-[#ed276e] text-[40px] text-center">
+              Design Insights
+            </h2>
+            <p className="font-['Quicksand',Helvetica] font-light text-[#3f505d] text-xl text-center">
+              Everything you need to know about painting
+            </p>
+          </div>
+
+          <div className="relative container mx-auto">
+            <DesignInsightsSection />
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="w-full mt-16">
+          <div className="flex flex-col items-center mb-8">
+            <h2 className="font-['Quicksand',Helvetica] font-medium text-[#ed276e] text-[40px] text-center">
+              FAQ
+            </h2>
+            <p className="font-['Quicksand',Helvetica] font-light text-[#3f505d] text-[28px] text-center">
+              Everything you need to know, answered!
+            </p>
+          </div>
+
+          <FAQSection />
+        </div>
+
+        {/* Footer Section */}
+        <FooterSection />
+
+        {/* Fixed Color Picker */}
+        <div className="fixed w-[55px] h-[55px] top-[728px] right-[100px] z-50">
+          <div className="relative h-[55px]">
+            <div className="absolute w-[35px] h-[35px] top-2.5 left-2.5 bg-white" />
+            <div className="absolute w-[55px] h-[55px] top-0 left-0 bg-[url(/color-.png)] bg-[100%_100%]" />
+          </div>
+        </div>
       </div>
     </div>
   );
