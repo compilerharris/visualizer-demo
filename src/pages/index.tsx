@@ -86,20 +86,18 @@ export default function Home() {
     <div className="bg-white flex flex-row justify-center w-full">
       {/* Dynamic SEO Metadata */}
       <Head>
-        <title>Visualizer Demo | HardReload</title>
+        <title>Home Glazer | HardReload</title>
         <meta name="description" content="This is staging link for HomeGlazer" />
-        <meta property="og:title" content="Visualizer Demo | HardReload" />
+        <meta property="og:title" content="Home Glazer | HardReload" />
         <meta property="og:description" content="This is staging link for HomeGlazer" />
-        {/* <meta property="og:image" content="https://netbizlabs.com/a+content/image1.jpg" /> */}
         <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://visualizer-demo.vercel.app" />
 
         {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="SMart Card" />
-        <meta name="twitter:title" content="Visualizer Demo | HardReload" />
+        <meta name="twitter:card" content="Home Glazer | HardReload" />
+        <meta name="twitter:title" content="Home Glazer | HardReload" />
         <meta name="twitter:description" content="This is staging link for HomeGlazer" />
-        {/* <meta name="twitter:image" content="https://netbizlabs.com/a+content/image1.jpg" /> */}
         <meta name="twitter:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
       </Head> 
       <div className="bg-white overflow-hidden w-full relative">
