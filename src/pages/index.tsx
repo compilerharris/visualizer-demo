@@ -87,9 +87,9 @@ export default function Home() {
       {/* Dynamic SEO Metadata */}
       <Head>
         <title>Visualizer Demo | HardReload</title>
-        <meta name="description" content="This is a demo for visualizer." />
+        <meta name="description" content="This is staging link for HomeGlazer" />
         <meta property="og:title" content="Visualizer Demo | HardReload" />
-        <meta property="og:description" content="This is a demo for visualizer." />
+        <meta property="og:description" content="This is staging link for HomeGlazer" />
         {/* <meta property="og:image" content="https://netbizlabs.com/a+content/image1.jpg" /> */}
         <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
         <meta property="og:type" content="website" />
@@ -98,7 +98,7 @@ export default function Home() {
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="SMart Card" />
         <meta name="twitter:title" content="Visualizer Demo | HardReload" />
-        <meta name="twitter:description" content="This is a demo for visualizer." />
+        <meta name="twitter:description" content="This is staging link for HomeGlazer" />
         {/* <meta name="twitter:image" content="https://netbizlabs.com/a+content/image1.jpg" /> */}
         <meta name="twitter:image" content="https://media.licdn.com/dms/image/v2/D4D0BAQG7g6qdNynOwg/company-logo_100_100/company-logo_100_100/0/1724951451490/hardreload_logo?e=1748476800&v=beta&t=tYaVxlyeFRv7af27GZjKKiZp8VoYgRK6YH1BNmk75Ww" />
       </Head> 
